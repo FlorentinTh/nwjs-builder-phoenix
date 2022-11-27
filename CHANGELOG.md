@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.15.1"></a>
+## [1.15.1](https://github.com/evshiron/nwjs-builder-phoenix/compare/v1.15.0...v1.15.1) (2022-11-27)
+
+
+### Bug Fixes
+
+* **NsisComposer:** fix reg entries for win builds ([98538da](https://github.com/evshiron/nwjs-builder-phoenix/commit/98538da))
+
+
+
 <a name="1.15.0"></a>
 # [1.15.0](https://github.com/evshiron/nwjs-builder-phoenix/compare/v1.14.7...v1.15.0) (2018-12-19)
 
