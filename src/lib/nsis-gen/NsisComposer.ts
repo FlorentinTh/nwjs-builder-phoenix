@@ -254,6 +254,8 @@ FunctionEnd`;
 #
 ${ NsisComposer.DIVIDER }
 
+!include "FileFunc.nsh"
+
 Section -Install
 
 SetShellVarContext current
@@ -271,7 +273,27 @@ ${ await this.makeInstallerFiles() }
 
 !insertmacro MUI_STARTMENU_WRITE_END
 
-  WriteUninstaller "$INSTDIR\\Uninstall.exe"
+WriteUninstaller "$INSTDIR\\Uninstall.exe"
+
+WriteRegStr HKCU "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\${_APPNAME}" "DisplayName" "\${_APPNAME}"
+
+WriteRegStr HKCU "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\${_APPNAME}" "UninstallString" "$\\\"$INSTDIR\\Uninstall.exe$\\""
+
+WriteRegStr HKCU "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\${_APPNAME}" "Publisher" "\${_COMPANYNAME}"
+
+WriteRegStr HKCU "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\${_APPNAME}" "DisplayVersion" "\${_VERSION}"
+
+WriteRegDWORD HKCU "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\${_APPNAME}" "NoModify" 1
+
+WriteRegDWORD HKCU "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\${_APPNAME}" "NoRepair" 1
+
+WriteRegStr HKCU "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\${_APPNAME}" "InstallLocation" "$\\\"$INSTDIR$\\""
+
+WriteRegStr HKCU "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\${_APPNAME}" "DisplayIcon" "$\\\"$INSTDIR\\\${_APPNAME}.exe$\\""
+
+\${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
+IntFmt $0 "0x%08X" $0
+WriteRegDWORD HKCU "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\${_APPNAME}" "EstimatedSize" "$0"
 
 SectionEnd`;
     }
@@ -297,6 +319,8 @@ RMDir "$SMPROGRAMS\\$StartMenuFolder"
 Delete "$DESKTOP\\\${_APPNAME}.lnk"
 
 DeleteRegKey HKCU "Software\\\${_APPNAME}"
+
+DeleteRegKey HKCU "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\\${_APPNAME}"
 
 SectionEnd`;
     }
