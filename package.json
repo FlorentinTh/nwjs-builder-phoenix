@@ -1,5 +1,5 @@
 {
-  "name": "nwjs-builder-phoenix",
+  "name": "@florentinth/nwjs-builder-phoenix",
   "version": "1.15.1",
   "description": "",
   "main": "./dist/lib/index.js",
