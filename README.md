@@ -3,6 +3,10 @@
 
 A possible solution to build and package a ready for distribution NW.js app for Windows, macOS and Linux.
 
+## Updates From Original Repository
+
+- __Add registry information to fix missing "Add/Remove Programs" entry in windows builds__
+
 ## Why Bother?
 
 We already had `nw-builder`, but it has made little progress on the way, and `nwjs-builder` has been hard to continue due to personal and historic reasons.
